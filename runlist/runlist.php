@@ -1,7 +1,20 @@
 <?php
 
+//**** Database ****
+if ($_POST['exp']) {$database = "runlist_".$_POST['exp']; $exp = $_POST['exp'];}
+else {$database = "runlist_xgt"; $exp = "xgt";}
+
 //**** Home directory ****
-$homeDir = "/xgt/";
+switch ($_POST['exp']) {
+    case "xgt":
+        $homeDir = "/xgt/";
+        break;
+    case "xlr":
+        $homeDir = "/xlr/";
+        break;
+    default:
+        $homeDir = "/xgt";
+}
 
 //**** Initialize ****
 $LibExport = "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/exodaq/ReadMidas/lib";
@@ -38,7 +51,7 @@ for ($i=0; $i<sizeof($files); $i++) {
    $ext = substr($file, strrpos($file, '.') + 1);
    $runNb = substr($file, 0, strrpos($file, '.'));
 
-   $run = mysql_query("select * from runlist where runNumber = '$runNb'");
+   $run = mysql_query("select * from $database where runNumber = '$runNb'");
    $currentRun = mysql_fetch_assoc($run);
 
    if ($runNormal == 1 && $currentRun["category"] == 0) {$dislpayRun = true;}
@@ -179,7 +192,7 @@ echo "<form action='enterruncategory.php' id='ckRun' class='fileform' method='po
       $siz = filesize($file_s);
       
       // check if run exists in database
-      $run = mysql_query("select * from runlist where runNumber = '$runNb'");
+      $run = mysql_query("select * from $database where runNumber = '$runNb'");
       
       // update run info if run already in database ...
       if ($currentRun = mysql_fetch_assoc($run)) {
@@ -188,7 +201,7 @@ echo "<form action='enterruncategory.php' id='ckRun' class='fileform' method='po
             $outp = shell_exec($cmd);
             $runInfo = split(';', $outp);
             
-            $upd = mysql_query("update runlist set nbEvents='$runInfo[0]', runDuration='$runInfo[1]', trigThreshold='$runInfo[2]', extTrigStatus='$runInfo[3]', localTrigStatus='$runInfo[4]', grpMultiplicity='$runInfo[5]', runDate='$runInfo[6]', fileSize='$siz' where runNumber = '$runNb'");
+            $upd = mysql_query("update $database set nbEvents='$runInfo[0]', runDuration='$runInfo[1]', trigThreshold='$runInfo[2]', extTrigStatus='$runInfo[3]', localTrigStatus='$runInfo[4]', grpMultiplicity='$runInfo[5]', runDate='$runInfo[6]', fileSize='$siz' where runNumber = '$runNb'");
 
             switch($currentRun['category']) {
                case 0:
@@ -254,22 +267,22 @@ echo "<form action='enterruncategory.php' id='ckRun' class='fileform' method='po
             $outp = shell_exec($cmd);
             $runInfo = split(';', $outp);
             
-            $input=mysql_query("insert into runlist (runNumber, runDate, runDuration, nbEvents, trigThreshold, grpMultiplicity, extTrigStatus, localTrigStatus, fileSize) values ('$runNb', '$runInfo[6]', '$runInfo[1]', '$runInfo[0]','$runInfo[2]', '$runInfo[5]', '$runInfo[3]', '$runInfo[4]', '$siz')") or die (mysql_error());
+            $input=mysql_query("insert into $database (runNumber, runDate, runDuration, nbEvents, trigThreshold, grpMultiplicity, extTrigStatus, localTrigStatus, fileSize) values ('$runNb', '$runInfo[6]', '$runInfo[1]', '$runInfo[0]','$runInfo[2]', '$runInfo[5]', '$runInfo[3]', '$runInfo[4]', '$siz')") or die (mysql_error());
             $bc = "#FFFFFF";
          }
          else {
-            $input=mysql_query("insert into runlist (runNumber, fileSize) values ('$runNb', '$siz')") or die (mysql_error());
+            $input=mysql_query("insert into $database (runNumber, fileSize) values ('$runNb', '$siz')") or die (mysql_error());
             $bc = "#FDFEB9";
          }
       }
       
       // reload run
-      $runR = mysql_query("select * from runlist where runNumber = '$runNb'");
+      $runR = mysql_query("select * from $database where runNumber = '$runNb'");
       $currentRunR = mysql_fetch_assoc($runR);
       $dateOfRunR = date("m/d/Y",$currentRunR['runDate']);
 
       // get number of attached files
-      $attachment = mysql_query("select * from attachments where run = '$runNb'");
+      $attachment = mysql_query("select * from attachments where run = '$runNb' && experiment = '$exp'");
       $nAtt = mysql_num_rows($attachment);
 
       echo "<tr>";
