@@ -1,7 +1,21 @@
 <?php
 
+if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
+
+//**** Database ****
+$database = "runlist_".$_COOKIE['experiment'];
+
 //**** Home directory ****
-$homeDir = "/xgt/";
+switch ($_COOKIE['experiment']) {
+    case "xgt":
+        $homeDir = "/xgt/";
+        break;
+    case "xlr":
+        $homeDir = "/xlr/";
+        break;
+    default:
+        $homeDir = "/xgt";
+}
 
 //**** Initialize ****
 $LibExport = "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/exodaq/ReadMidas/lib";
@@ -66,7 +80,7 @@ echo "</table>\n";
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
 
-$run = mysql_query("select * from runlist where runNumber = '$runNb'");
+$run = mysql_query("select * from $database where runNumber = '$runNb'");
 $currentRun = mysql_fetch_assoc($run);
 
 if ($currentRun['runDate'] != 0) {

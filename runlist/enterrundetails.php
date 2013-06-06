@@ -1,5 +1,10 @@
 <?php
 
+if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
+
+//**** Database ****
+$database = "runlist_".$_COOKIE['experiment'];
+
 // connect with database
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
@@ -31,10 +36,10 @@ switch($_POST["selectOption"]) {
 }
 
 if ($_POST["selectOption"] != "") {
-   $upd = mysql_query("update runlist set pressure='$inppressure', gridVolt='$inpgridVolt', cathodeVolt='$inpcathodeVolt', firstRingVolt='$inpfirstRingVolt', leakageCurrent='$inpleakagaCurrent', notes='$inpnotes', category='$cat' where runNumber = '$inpid'");
+   $upd = mysql_query("update $database set pressure='$inppressure', gridVolt='$inpgridVolt', cathodeVolt='$inpcathodeVolt', firstRingVolt='$inpfirstRingVolt', leakageCurrent='$inpleakagaCurrent', notes='$inpnotes', category='$cat' where runNumber = '$inpid'");
 }
 else {
-   $upd = mysql_query("update runlist set pressure='$inppressure', gridVolt='$inpgridVolt', cathodeVolt='$inpcathodeVolt', firstRingVolt='$inpfirstRingVolt', leakageCurrent='$inpleakagaCurrent', notes='$inpnotes' where runNumber = '$inpid'");
+   $upd = mysql_query("update $database set pressure='$inppressure', gridVolt='$inpgridVolt', cathodeVolt='$inpcathodeVolt', firstRingVolt='$inpfirstRingVolt', leakageCurrent='$inpleakagaCurrent', notes='$inpnotes' where runNumber = '$inpid'");
 }
 
 echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=runlist/runlist.php'>";

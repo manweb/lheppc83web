@@ -1,5 +1,10 @@
 <?php
 
+if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
+
+//**** Database ****
+$database = "runlist_".$_COOKIE['experiment'];
+
 // connect with database
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
@@ -27,7 +32,7 @@ switch($_POST["selectOption"]) {
 if ($cat != 10 && $_POST["SelectedRun"]) {
    for ($i = 0; $i < count($_POST["SelectedRun"]); $i++) {
       $id = $_POST["SelectedRun"][$i];
-      $upd = mysql_query("update runlist set category='$cat' where runNumber = '$id'");
+      $upd = mysql_query("update $database set category='$cat' where runNumber = '$id'");
    }
 }
 

@@ -1,5 +1,19 @@
 <?php
 
+if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
+
+//**** Home directory ****
+switch ($_COOKIE['experiment']) {
+    case "xgt":
+        $homeDir = "/xgt/";
+        break;
+    case "xlr":
+        $homeDir = "/xlr/";
+        break;
+    default:
+        $homeDir = "/xgt";
+}
+
 $runNb = $_GET["id"];
 
 $homeDir = "/xgt/";
