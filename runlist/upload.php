@@ -1,5 +1,8 @@
 <?php
 
+$exp = $_COOKIE['experiment'];
+if (!$exp) {$exp = "xgt";}
+
 $runID = $_GET['runID'];
 
 // connect with database
