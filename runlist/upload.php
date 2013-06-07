@@ -1,9 +1,5 @@
 <?php
 
-if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
-
-$exp = $_COOKIE['experiment'];
-
 $runID = $_GET['runID'];
 
 // connect with database
