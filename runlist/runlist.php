@@ -141,7 +141,7 @@ echo "      </td>\n";
 echo "   </tr>\n";
 echo "</table>\n";
 
-echo "<form action='enterruncategory.php' id='ckRun' class='fileform' method='post' enctype='multipart/form-data'>";
+echo "<form action='runlist/enterruncategory.php' id='ckRun' class='fileform' method='post' enctype='multipart/form-data'>";
 
 ?>
 <table align="center" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="760">
