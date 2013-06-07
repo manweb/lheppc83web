@@ -5,6 +5,8 @@ if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
 //**** Database ****
 $database = "runlist_".$_COOKIE['experiment'];
 
+$exp = $_COOKIE['experiment'];
+
 //**** Home directory ****
 switch ($_COOKIE['experiment']) {
     case "xgt":
@@ -327,7 +329,7 @@ echo "</table>\n";
 
 <?php
 
-$attachments = mysql_query("select * from attachments where run = '$runNb' order by id desc");
+$attachments = mysql_query("select * from attachments where run = '$runNb' and experiment = '$exp' order by id desc");
 $nAtt = mysql_num_rows($attachments);
 
 if ($nAtt > 0) {
