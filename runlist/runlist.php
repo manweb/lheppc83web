@@ -108,9 +108,13 @@ else {echo "<input type='checkbox' name='DisplayOptions[]' value='halted'>";}
 echo "&nbsp;<font size='2'>Halted runs</font>&nbsp;";
 echo "<img src='image/grey.png' border='0' align='absmiddle'></font></p>";
 echo "<p style='margin-top: 10px; margin-bottom: 0px; margin-left: 5px; margin-right: 0px;'><font size='2'>";
-echo "Experiment:&nbsp;<select name='exp' selected='$exp'>";
-echo "<option>xgt</option>";
-echo "<option>xlr</option>";
+echo "Experiment:&nbsp;<select name='exp'>";
+echo "<option";
+if ($exp == "xgt") {echo " selected='selected'";}
+echo ">xgt</option>";
+echo "<option";
+if ($exp == "xlr") {echo " selected='selected'";}
+echo ">xlr</option>";
 echo "</select>&nbsp;&nbsp;";
 echo "Max&nbsp;<input type='text' style='width:25px; height:20px;' name='nbFiles' maxlength='5' value='$nrFilesPerPage'>&nbsp;files (".sizeof($files)."&nbsp;total)</font></p>";
 echo "<p align='right' style='margin-top: 0px; margin-bottom: 10px; margin-left: 0px; margin-right: 10px;'>";
