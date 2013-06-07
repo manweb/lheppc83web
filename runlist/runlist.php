@@ -1,24 +1,5 @@
 <?php
 
-//**** Database ****
-if ($_POST['exp']) {$database = "runlist_".$_POST['exp']; $exp = $_POST['exp']; setcookie("experiment", $_POST['exp'], time()+86400);}
-elseif ($_COOKIE['experiment']) {$database = "runlist_".$_COOKIE['experiment']; $exp = $_COOKIE['experiment'];}
-else {$database = "runlist_xgt"; $exp = "xgt";}
-
-if (!$_COOKIE['experiment']) {setcookie("experiment", $exp, time()+86400);}
-
-//**** Home directory ****
-switch ($exp) {
-    case "xgt":
-        $homeDir = "/xgt/";
-        break;
-    case "xlr":
-        $homeDir = "/xlr/";
-        break;
-    default:
-        $homeDir = "/xgt";
-}
-
 //**** Initialize ****
 $LibExport = "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/exodaq/ReadMidas/lib";
 $PathExport = "export PATH=$PATH:/home/exodaq/ReadMidas/bin";
