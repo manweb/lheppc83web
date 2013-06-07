@@ -285,7 +285,7 @@ echo "<form action='enterruncategory.php' id='ckRun' class='fileform' method='po
       $dateOfRunR = date("m/d/Y",$currentRunR['runDate']);
 
       // get number of attached files
-      $attachment = mysql_query("select * from attachments where run = '$runNb' && experiment = '$exp'");
+      $attachment = mysql_query("select * from attachments where run = '$runNb' and experiment = '$exp'");
       $nAtt = mysql_num_rows($attachment);
 
       echo "<tr>";
