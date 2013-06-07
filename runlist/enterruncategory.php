@@ -1,5 +1,8 @@
 <?php
 
+$database = "runlist_".$_COOKIE['experiment'];
+if ($database == "runlist_") {$database = "runlist_xgt";}
+
 // connect with database
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
