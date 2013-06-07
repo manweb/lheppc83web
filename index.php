@@ -252,6 +252,25 @@ else {
    $runHalted = 1;
 }
 
+//**** Database ****
+if ($_POST["exp"]) {$database = "runlist_".$_POST["exp"]; $exp = $_POST["exp"]; setcookie("experiment", $_POST["exp"], time()+86400);}
+elseif ($_COOKIE["experiment"]) {$database = "runlist_".$_COOKIE["experiment"]; $exp = $_COOKIE["experiment"];}
+else {$database = "runlist_xgt"; $exp = "xgt";}
+
+if (!$_COOKIE["experiment"]) {setcookie("experiment", $exp, time()+86400);}
+
+//**** Home directory ****
+switch ($exp) {
+    case "xgt":
+        $homeDir = "/xgt/";
+        break;
+    case "xlr":
+        $homeDir = "/xlr/";
+        break;
+    default:
+        $homeDir = "/xgt/";
+}
+
 // **** TOP ***************************************************************************************
 echo "<table align='center' border='0' bordercolor='#000000' cellpadding='0' cellspacing='0' style='border-collapse: collapse;' width='800' height='100'>\n";
 echo "   <tr>\n";
