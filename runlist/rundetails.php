@@ -1,24 +1,5 @@
 <?php
 
-if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
-
-//**** Database ****
-$database = "runlist_".$_COOKIE['experiment'];
-
-$exp = $_COOKIE['experiment'];
-
-//**** Home directory ****
-switch ($_COOKIE['experiment']) {
-    case "xgt":
-        $homeDir = "/xgt/";
-        break;
-    case "xlr":
-        $homeDir = "/xlr/";
-        break;
-    default:
-        $homeDir = "/xgt/";
-}
-
 //**** Initialize ****
 $LibExport = "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/exodaq/ReadMidas/lib";
 $PathExport = "export PATH=$PATH:/home/exodaq/ReadMidas/bin";
