@@ -1,5 +1,9 @@
 <?php
 
+if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
+
+$exp = $_COOKIE['experiment'];
+
 $runID = $_GET['runID'];
 
 // connect with database
@@ -22,7 +26,7 @@ if ($_FILES["file"]["error"] > 0) {echo "Return Code: " . $_FILES["file"]["error
 else {
    move_uploaded_file($_FILES["file"]["tmp_name"],"../attachments/" . $name);
 
-   $insert = mysql_query("insert into attachments (date, filename, run, type, size, comment, id) values ('$date ', '$name', '$runID', '$type', '$size', '$comment', '$ID')");
+   $insert = mysql_query("insert into attachments (date, filename, run, type, size, comment, experiment, id) values ('$date ', '$name', '$runID', '$type', '$size', '$comment', '$exp', '$ID')");
 }
 
 echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=runlist/rundetails.php&id=$runID'>";
