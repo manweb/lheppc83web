@@ -1,10 +1,5 @@
 <?php
 
-if (!$_COOKIE['experiment']) {setcookie("experiment", "xgt", time()+86400);}
-
-//**** Database ****
-$database = "runlist_".$_COOKIE['experiment'];
-
 // connect with database
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
