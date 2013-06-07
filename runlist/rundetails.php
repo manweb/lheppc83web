@@ -16,7 +16,7 @@ switch ($_COOKIE['experiment']) {
         $homeDir = "/xlr/";
         break;
     default:
-        $homeDir = "/xgt";
+        $homeDir = "/xgt/";
 }
 
 //**** Initialize ****
