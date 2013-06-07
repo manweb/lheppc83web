@@ -1,5 +1,8 @@
 <?php
 
+$exp = $_COOKIE['experiment'];
+if (!$exp) {$exp = "xgt";}
+
 // connect with database
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
@@ -13,7 +16,7 @@ $FileName = mysql_result($result,0);
 
 unlink("../attachments/".$FileName);
 
-$delete = mysql_query("delete from attachments where id = '$ID' && experiment = '$exp'");
+$delete = mysql_query("delete from attachments where id = '$ID' and experiment = '$exp'");
 
 echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=$page&id=$runID'>";
 
