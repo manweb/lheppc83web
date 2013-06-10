@@ -1,3 +1,14 @@
+<html>
+<head>
+<head>
+<script type="text/javascript">
+function changeVis(id) {
+   if (document.getElementById(id).style.display == 'none') {document.getElementById(id).style.display = 'block';}
+   else {document.getElementById(id).style.display = 'none';}
+}
+</script>
+</head>
+
 <table align="center" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="760">
 <tr>
 <td valign="middle" align="left" style="border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: solid; border-bottom-width: 1" width="80" height="30" bgcolor="#FFFFFF"><font size="2">Issue#</font>
@@ -43,3 +54,5 @@ while ($issues = mysql_fetch_assoc($result)) {
 ?>
 
 </table>
+
+</html>
