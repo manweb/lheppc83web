@@ -37,7 +37,7 @@ function changeVis(id) {
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
 
-$result = mysql_query("select * from issuetracker order by category, date");
+$result = mysql_query("select * from issuetracker where CommentID='0' order by category, date");
 
 while ($issues = mysql_fetch_assoc($result)) {
     switch ($issues['Category']) {
