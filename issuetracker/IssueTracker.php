@@ -62,11 +62,11 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "</tr>\n";
   echo "<tr>\n";
   echo "<td style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: solid; border-bottom-width: 1'>\n";
-  echo "<div id='div".nl2br($issues['ID'])."' style='display:none'>\n";
+  echo "<div id='div".$issues['ID']."' style='display:none'>\n";
   echo "Error output:<br>\n";
   echo "<table align='right' border='0' bordercolor='#000000' cellpadding='0' cellspacing='0' style='border-collapse: collapse; ' width='700'>\n";
   echo "<tr>\n";
-  echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: dashed; border-left-width: 1; border-right-style: dashed; border-right-width: 1; border-top-style: dashed; border-top-width: 1; border-bottom-style: dashed; border-bottom-width: 1; paddingtop: 5; padding-left: 5; padding-right: 5; padding-right: 5;' width='650' bgcolor='#E2E2E2'><font size='2'>".$issues['Message']."</font>\n";
+  echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: dashed; border-left-width: 1; border-right-style: dashed; border-right-width: 1; border-top-style: dashed; border-top-width: 1; border-bottom-style: dashed; border-bottom-width: 1; paddingtop: 5; padding-left: 5; padding-right: 5; padding-right: 5;' width='650' bgcolor='#E2E2E2'><font size='2'>".nl2br($issues['Message'])."</font>\n";
   echo "</td>\n";
   echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='50' bgcolor='#FFFFFF'>\n";
   echo "</td>\n";
