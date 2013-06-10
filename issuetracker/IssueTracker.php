@@ -29,6 +29,7 @@ function changeVis(id) {
 </tr>
 </table>
 </td>
+</tr>
 
 <?php
 
@@ -39,6 +40,7 @@ mysql_select_db("exo");
 $result = mysql_query("select * from issuetracker order by category, date");
 
 while ($issues = mysql_fetch_assoc($result)) {
+  echo "<tr>\n";
   echo "<td>\n";
   echo "<table align='center' border='0' bordercolor='#000000' cellpadding='0' cellspacing='0' style='border-collapse: collapse; ' width='760'>\n";
   echo "<tr>\n";
@@ -57,9 +59,12 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "</tr>\n";
   echo "</table>\n";
   echo "</td>\n";
+  echo "</tr>\n";
+  echo "<tr>\n";
   echo "<td>\n";
   echo "<div id='div".$issues['ID']."' style='display:none'>More content</div>\n";
   echo "</td>\n";
+  echo "</tr>\n";
 }
 
 ?>
