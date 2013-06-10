@@ -68,7 +68,7 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "<tr>\n";
   echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: dashed; border-left-width: 2; border-right-style: dashed; border-right-width: 2; border-top-style: dashed; border-top-width: 2; border-bottom-style: dashed; border-bottom-width: 2' width='650' bgcolor='#FFFFFF'><font size='2'>More Content.</font>\n";
   echo "</td>\n";
-  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='80' height='30' bgcolor='#FFFFFF'>\n"
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='50' bgcolor='#FFFFFF'>\n";
   echo "</td>\n";
   echo "</tr>\n";
   echo "</table>\n";
