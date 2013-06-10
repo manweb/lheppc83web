@@ -42,15 +42,16 @@ $result = mysql_query("select * from issuetracker where CommentID='0' order by c
 while ($issues = mysql_fetch_assoc($result)) {
     switch ($issues['Category']) {
         case 0:
-            $bgcolor = "#F5A9D0";
+            $bgcolor = "#F8E0F7";
             break;
         case 1:
-            $bgcolor = "#A9BCF5";
+            $bgcolor = "#E0E0F8";
             break;
         case 2:
-            $bgcolor = "#A9F5A9";
+            $bgcolor = "#E0F8E0";
+            break;
         case 3:
-            $bgcolor = "#F2F5A9";
+            $bgcolor = "#F7F8E0";
             break;
     }
     
