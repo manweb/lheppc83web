@@ -317,7 +317,7 @@ echo "      </td>\n";
 echo "      <td valign='bottom' align='center' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0; background: url($tab4) no-repeat bottom left;' width='100' height='20'>\n";
 echo "<font size='2' color='#FFFFFF'><a href='index.php?page=EXO200Status/status.php' style='color:White; text-decoration:none'>EXO200</a></font>";
 echo "      </td>\n";
-echo "      <td valign='bottom' align='center' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0; background: url($tab4) no-repeat bottom left;' width='100' height='20'>\n";
+echo "      <td valign='bottom' align='center' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0; background: url($tab5) no-repeat bottom left;' width='100' height='20'>\n";
 echo "<font size='2' color='#FFFFFF'><a href='index.php?page=issuetracker/IssueTracker.php' style='color:White; text-decoration:none'>Issue Tracker</a></font>";
 echo "      </td>\n";
 echo "      <td valign='bottom' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='265' height='20'>\n";
