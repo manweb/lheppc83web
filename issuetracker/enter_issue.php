@@ -24,7 +24,7 @@ if ($_POST['Description']) {$description = $_POST['Description'];}
 else {$description = 0;}
 $message = $_POST['Message'];
 if ($_POST['DueOn']) {$dueOn = $_POST['DueOn'];}
-else {$dueOn = 0;}
+else {$dueOn = "";}
 if ($_POST['Category']) {
    switch ($_POST['Category']) {
       case "Urgent":
