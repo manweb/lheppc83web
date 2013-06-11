@@ -37,4 +37,7 @@ if ($_POST['Category']) {
 else {$category = 0;}
 
 $insert = mysql_query("insert into issuetracker ('ID', 'date', 'time', 'Project', 'SubmitBy', 'AssignedTo', 'Description', 'Message,' 'DueOn', 'category', 'CommentID') values ($id, $current_date, $current_time, $project, $name, $assigned, $description, $message, $dueOn, $category, $comID)");
+
+echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=issuetracker/IssueTracker.php'>";
+
 ?>
