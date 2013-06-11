@@ -141,6 +141,15 @@ function changeVis(id) {
 }
 </script>
 
+<script type="text/javascript">
+
+function changeLink(id) {
+   document.getElementById("LinkSolved").href="issuetracker/issue_solved.php?id="+id;
+   document.getElementById("LinkArchive").href="issuetracker/archive_issue.php?id="+id;
+   document.getElementById("LinkDelete").href="issuetracker/delete_issue.php?id="+id;
+}
+</script>
+
 <script src="jquery-1.3.2.min.js"></script>
 
 <script>
