@@ -61,9 +61,15 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "</td>\n";
   echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='100' height='30' bgcolor='$bgcolor'><font size='2'>".$issues['Project']."</font>\n";
   echo "</td>\n";
-  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='100' height='30' bgcolor='$bgcolor'><font size='2'>".$issues['SubmitBy']."</font>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='100' height='30' bgcolor='$bgcolor'><font size='2'>";
+  if ($issues['SubmitBy'] == "") {echo "Anonymus";}
+  else {echo $issues['SubmitBy'];}
+  echo "</font>\n";
   echo "</td>\n";
-  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='100' height='30' bgcolor='$bgcolor'><font size='2'>".$issues['AssignedTo']."</font>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='100' height='30' bgcolor='$bgcolor'><font size='2'>";
+  if ($issues['AssignedTo'] == "") {echo "Anybody";}
+  else {echo $issues['AssignedTo'];}
+  echo "</font>\n";
   echo "</td>\n";
   echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='260' height='30' bgcolor='$bgcolor'><font size='2'>".$issues['Description']."</font>\n";
   echo "</td>\n";
