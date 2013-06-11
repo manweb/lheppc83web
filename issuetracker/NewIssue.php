@@ -57,6 +57,15 @@
 </tr>
 
 <tr>
+<td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Category:</td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><select name="Category">
+<option>Urgent</option>
+<option>Moderate</option>
+</select>
+</td>
+</tr>
+
+<tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200"></td>
 <td style="margin-top: 5; margin-bottom: 5;" width="500"><br><input type="submit" value="Submit" class="btn"></td>
 </tr>
