@@ -162,6 +162,7 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "</tr>\n";
   echo "</table>\n";
   echo "</form>\n";
+  echo "</div>\n";
   echo "</td>\n";
   echo "</tr>\n";
 }
