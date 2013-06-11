@@ -43,22 +43,22 @@
 
 <tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Description:</td>
-<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Description" rows="5" cols="50"></textarea></td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Description" rows="5" cols="50" class="field"></textarea></td>
 </tr>
 
 <tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Error message:</td>
-<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Message" rows="15" cols="50"></textarea></td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Message" rows="15" cols="50" class="field"></textarea></td>
 </tr>
 
 <tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Due on:</td>
-<td style="margin-top: 5; margin-bottom: 5;" width="500"><input type="text" name="DueOn"></td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><input type="text" name="DueOn"> (yyyy-mm-dd)</td>
 </tr>
 
 <tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200"></td>
-<td style="margin-top: 5; margin-bottom: 5;" width="500"><br><input type="submit" value="Submit"></td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><br><input type="submit" value="Submit" class="btn"></td>
 </tr>
 
 </table>
@@ -66,4 +66,3 @@
 </form>
 
 <br>
-
