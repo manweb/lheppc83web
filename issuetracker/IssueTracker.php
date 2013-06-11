@@ -121,7 +121,47 @@ while ($issues = mysql_fetch_assoc($result)) {
             echo "</table>\n";
         }
     }
+    echo "<a href='javascript:changeVis(\"div".$issues['ID']."_2\")'><img src='../image/add_comment.png' align='middle'></a>\n";
   echo "</div>\n";
+  echo "<div id='div".$issues['ID']."_2' style='display:none'>\n";
+  echo "<form action='issuetracker/enter_issue.php' class='fileform' method='post' enctype='multipart/form-data'>\n";
+  echo "<table align='right' border='0' bordercolor='#000000' cellpadding='10' cellspacing='0' style='border-collapse: collapse; margin-bottom: 10' width='720'>\n";
+  echo "<tr>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='40' bgcolor='$bgcolor'>\n";
+  echo "</td>\n";
+  echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='660' bgcolor='$bgcolor'>\n";
+  echo "<select name='SubmitBy'>\n";
+
+    $result = mysql_query("select name from users");
+    while ($names = mysql_fetch_assoc($result)) {
+        echo "<option>".$names['name']."</option>\n";
+    }
+
+  echo "</select>\n";
+  echo "</td>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='20' bgcolor='$bgcolor'>\n";
+  echo "</td>\n";
+  echo "</tr>\n";
+  echo "<tr>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='40' bgcolor='$bgcolor'>\n";
+  echo "</td>\n";
+  echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='660' bgcolor='$bgcolor'>\n";
+  echo "<textarea name='Message' rows="5" cols="20" class='field'></textarea>\n";
+  echo "</td>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='20' bgcolor='$bgcolor'>\n";
+  echo "</td>\n";
+  echo "</tr>\n";
+  echo "<tr>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='40' bgcolor='$bgcolor'>\n";
+  echo "</td>\n";
+  echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='660' bgcolor='$bgcolor'>\n";
+  echo "<br><input type='submit' value='Submit' class='btn'>\n";
+  echo "</td>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='20' bgcolor='$bgcolor'>\n";
+  echo "</td>\n";
+  echo "</tr>\n";
+  echo "</table>\n";
+  echo "</form>\n";
   echo "</td>\n";
   echo "</tr>\n";
 }
