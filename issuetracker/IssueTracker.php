@@ -1,4 +1,4 @@
-<p align="right" style="margin-top: 5; margin-bottom: 5; margin-right: 20;"><a href=index.php?page=issuetracker/NewIssue.php<img src="../image/add_issue.png"></a></p>
+<p align="right" style="margin-top: 5; margin-bottom: 5; margin-right: 20;"><a href="index.php?page=issuetracker/NewIssue.php"><img src="../image/add_issue.png"></a></p>
 
 <table align="center" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="720">
 <tr>
