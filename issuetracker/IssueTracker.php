@@ -67,7 +67,10 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "</td>\n";
   echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='260' height='30' bgcolor='$bgcolor'><font size='2'>".$issues['Description']."</font>\n";
   echo "</td>\n";
-  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='80' height='30' bgcolor='$bgcolor'><font size='2'>".$issues['DueOn']."</font>\n";
+  echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='80' height='30' bgcolor='$bgcolor'><font size='2'>";
+  if ($issues['DueOn'] == "0000-00-00") {echo "Immediately";}
+  else {echo $issues['DueOn'];}
+  echo "</font>\n";
   echo "</td>\n";
     echo "<td valign='middle' align='center' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='30' height='30' bgcolor='$bgcolor'>";
     if ($nCom > 0) {echo "<img src='../image/comment.png' align='middle'><font size='2'> ".$nCom."</font>";}
