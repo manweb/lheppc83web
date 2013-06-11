@@ -7,7 +7,7 @@ $id = $_POST['id'];
 
 if (!$_POST['DueOn']) {
    $result = mysql_query("select max(CommentID) from issuetracker where ID='$id'");
-   $comID = mysql_result($result,0);
+   $comID = mysql_result($result,0) + 1;
 }
 else {$comID = 0;}
 
@@ -36,7 +36,7 @@ if ($_POST['Category']) {
 }
 else {$category = 0;}
 
-$insert = mysql_query("insert into issuetracker ('ID', 'date', 'time', 'Project', 'SubmitBy', 'AssignedTo', 'Description', 'Message,' 'DueOn', 'category', 'CommentID') values ($id, $current_date, $current_time, $project, $name, $assigned, $description, $message, $dueOn, $category, $comID)");
+$insert = mysql_query("insert into issuetracker (ID, date, time, Project, SubmitBy, AssignedTo, Description, Message, DueOn, category, CommentID) values ('$id', '$current_date', '$current_time', '$project', '$name', '$assigned', '$description', '$message', '$dueOn', '$category', '$comID')");
 
 echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=issuetracker/IssueTracker.php'>";
 
