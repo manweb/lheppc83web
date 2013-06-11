@@ -1,14 +1,3 @@
-<html>
-<head>
-<head>
-<script type="text/javascript">
-function changeVis(id) {
-   if (document.getElementById(id).style.display == 'none') {document.getElementById(id).style.display = 'block';}
-   else {document.getElementById(id).style.display = 'none';}
-}
-</script>
-</head>
-
 <p align="right" style="margin-top: 5; margin-bottom: 5; margin-right: 20;"><img src="../image/add_issue.png"></p>
 
 <table align="center" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="720">
@@ -158,5 +147,3 @@ while ($issues = mysql_fetch_assoc($result)) {
 </table>
 
 <br>
-
-</html>
