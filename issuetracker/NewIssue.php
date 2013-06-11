@@ -5,14 +5,19 @@
     mysql_select_db("exo");
 ?>
 
-<form action="enter_issue.php">
-<p align="left" style="margin-left: 20;">
+<p style="margin-left: 20; margin-top: 5; margin-bottom: 10;"><font size="4">Submit new issue</font></p>
 
-Project: <input type="text" name="Project">
-</p>
-<p align="left" style="margin-left: 20;">
+<form action="issuetracker/enter_issue.php" class="fileform" method="post" enctype="multipart/form-data">
 
-Submitted by: <select name="SubmitBy">
+<table align="center" border="0">
+<tr>
+<td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Project:</td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><input type="text" name="Project"></td>
+</tr>
+
+<tr>
+<td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Submitted by:</td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><select name="SubmitBy">
 <?php
     $result = mysql_query("select name from users");
     while ($names = mysql_fetch_assoc($result)) {
@@ -20,10 +25,12 @@ Submitted by: <select name="SubmitBy">
     }
 ?>
 </select>
-</p>
-<p align="left" style="margin-left: 20;">
+</td>
+</tr>
 
-Assigned to: <select name="AssignedTo">
+<tr>
+<td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Assigned to:</td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><select name="AssignedTo">
 <?php
     $result = mysql_query("select name from users");
     while ($names = mysql_fetch_assoc($result)) {
@@ -31,21 +38,24 @@ Assigned to: <select name="AssignedTo">
     }
 ?>
 </select>
-</p>
+</td>
+</tr>
 
-<p align="left" style="margin-left: 20;">
+<tr>
+<td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Description:</td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Description"></textarea></td>
+</tr>
 
-Description: <textarea name="Description"></textarea>
-</p>
+<tr>
+<td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Error message:</td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Message"></textarea></td>
+</tr>
 
-<p align="left" style="margin-left: 20;">
+<tr>
+<td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Due on:</td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><input type="text" name="DueOn"></td>
+</tr>
 
-Error message: <textarea name="Message"></textarea>
-</p>
-
-<p align="left" style="margin-left: 20;">
-
-Due on: <input type="text" name="DueOn">
-</p>
+</table>
 
 </form>
