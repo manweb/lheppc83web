@@ -3,7 +3,8 @@
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
 
-$id = $_POST['id'];
+$result = mysql_query("select max(ID) from issuetracker");
+$id = mysql_result($result,0) + 1;
 
 if (!$_POST['DueOn']) {
    $result = mysql_query("select max(CommentID) from issuetracker where ID='$id'");
