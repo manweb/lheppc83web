@@ -6,7 +6,7 @@ mysql_select_db("exo");
 $result = mysql_query("select max(ID) from issuetracker");
 $id = mysql_result($result,0) + 1;
 
-if (!$_POST['DueOn']) {
+if (!$_POST['AssignedTo']) {
    $result = mysql_query("select max(CommentID) from issuetracker where ID='$id'");
    $comID = mysql_result($result,0) + 1;
 }
