@@ -79,7 +79,7 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "</font>\n";
   echo "</td>\n";
     echo "<td valign='middle' align='center' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='30' height='30' bgcolor='$bgcolor'>";
-    if ($nCom > 0) {echo "<img src='../image/comment.png' align='middle'><font size='2'> ".$nCom."</font>";}
+    if ($nCom > 0) {echo "<img src='../image/comment.png' align='middle'><font size='2'> ".$nCom."</font><input type='radio' onClick='changLink(".$issues['ID'].")'";}
     echo "\n";
     echo "</td>\n";
   echo "</tr>\n";
