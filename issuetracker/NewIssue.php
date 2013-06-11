@@ -18,6 +18,7 @@
 <tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Submitted by:</td>
 <td style="margin-top: 5; margin-bottom: 5;" width="500"><select name="SubmitBy">
+<option></option>
 <?php
     $result = mysql_query("select name from users");
     while ($names = mysql_fetch_assoc($result)) {
@@ -31,6 +32,7 @@
 <tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Assigned to:</td>
 <td style="margin-top: 5; margin-bottom: 5;" width="500"><select name="AssignedTo">
+<option></option>
 <?php
     $result = mysql_query("select name from users");
     while ($names = mysql_fetch_assoc($result)) {
