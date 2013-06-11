@@ -146,7 +146,7 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='40' bgcolor='$bgcolor'>\n";
   echo "</td>\n";
   echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='660' bgcolor='$bgcolor'>\n";
-  echo "<textarea name='Message' rows="5" cols="20" class='field'></textarea>\n";
+  echo "<textarea name='Message' rows='5' cols='20' class='field'></textarea>\n";
   echo "</td>\n";
   echo "<td valign='middle' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='20' bgcolor='$bgcolor'>\n";
   echo "</td>\n";
