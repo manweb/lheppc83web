@@ -5,7 +5,7 @@
     mysql_select_db("exo");
 ?>
 
-<p style="margin-left: 20; margin-top: 5; margin-bottom: 10;"><font size="4">Submit new issue</font></p>
+<p align="left" style="margin-left: 20; margin-top: 5; margin-bottom: 10;"><font size="4">Submit new issue</font></p>
 
 <form action="issuetracker/enter_issue.php" class="fileform" method="post" enctype="multipart/form-data">
 
@@ -43,12 +43,12 @@
 
 <tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Description:</td>
-<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Description"></textarea></td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Description" rows="5" cols="50"></textarea></td>
 </tr>
 
 <tr>
 <td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200">Error message:</td>
-<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Message"></textarea></td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><textarea name="Message" rows="15" cols="50"></textarea></td>
 </tr>
 
 <tr>
@@ -56,6 +56,14 @@
 <td style="margin-top: 5; margin-bottom: 5;" width="500"><input type="text" name="DueOn"></td>
 </tr>
 
+<tr>
+<td style="margin-top: 5; margin-bottom: 5; margin-right: 5;" width="200"></td>
+<td style="margin-top: 5; margin-bottom: 5;" width="500"><br><input type="submit" value="Submit"></td>
+</tr>
+
 </table>
 
 </form>
+
+<br>
+
