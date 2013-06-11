@@ -123,6 +123,7 @@ while ($issues = mysql_fetch_assoc($result)) {
   echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: dashed; border-left-width: 1; border-right-style: dashed; border-right-width: 1; border-top-style: dashed; border-top-width: 1; border-bottom-style: dashed; border-bottom-width: 1' width='660' bgcolor='#E2E2E2'>\n";
   echo "<form action='issuetracker/enter_issue.php' class='fileform' method='post' enctype='multipart/form-data'>\n";
   echo "<select name='SubmitBy'>\n";
+  echo "<option></option>\n";
 
     $r = mysql_query("select name from users");
     while ($names = mysql_fetch_assoc($r)) {
