@@ -144,9 +144,24 @@ function changeVis(id) {
 <script type="text/javascript">
 
 function changeLink(id) {
-   document.getElementById("LinkSolved").href="issuetracker/issue_solved.php?id="+id;
-   document.getElementById("LinkArchive").href="issuetracker/archive_issue.php?id="+id;
-   document.getElementById("LinkDelete").href="issuetracker/delete_issue.php?id="+id;
+    var ckID = "ck"+id;
+    if (document.getElementById(ckID).checked) {
+        document.getElementById("LinkSolved").href="issuetracker/issue_solved.php?id="+id;
+        document.getElementById("LinkArchive").href="issuetracker/archive_issue.php?id="+id;
+        document.getElementById("LinkDelete").href="issuetracker/delete_issue.php?id="+id;
+    }
+    else {
+        document.getElementById("LinkSolved").href="#";
+        document.getElementById("LinkArchive").href="#";
+        document.getElementById("LinkDelete").href="#";
+    }
+    
+    var inputElems = document.getElementsByTagName("input");
+    for (var i=0; i<inputElems.length; i++) {
+        if (inputElems[i].type === "checkbox" && inputElems[i].checked === true && inputElems[i].id != ckID) {
+            inputElems[i].checked = false;
+        }
+    }
 }
 </script>
 
@@ -326,8 +341,16 @@ echo "      </td>\n";
 echo "      <td valign='bottom' align='center' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0; background: url($tab4) no-repeat bottom left;' width='100' height='20'>\n";
 echo "<font size='2' color='#FFFFFF'><a href='index.php?page=EXO200Status/status.php' style='color:White; text-decoration:none'>EXO200</a></font>";
 echo "      </td>\n";
+// connect with database
+$db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
+mysql_select_db("exo");
+
+    $result = mysql_query("select * from issuetracker where CommentID='0' and category < 2");
+    $nIssues = mysql_num_rows($result);
+    if ($nIssues > 0) {$nI = "(".$nIssues.")";}
+    else {$nI = "";}
 echo "      <td valign='bottom' align='center' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0; background: url($tab5) no-repeat bottom left;' width='100' height='20'>\n";
-echo "<font size='2' color='#FFFFFF'><a href='index.php?page=issuetracker/IssueTracker.php' style='color:White; text-decoration:none'>Issue Tracker</a></font>";
+echo "<font size='2' color='#FFFFFF'><a href='index.php?page=issuetracker/IssueTracker.php' style='color:White; text-decoration:none'>Issue Tracker ".$nI."</a></font>";
 echo "      </td>\n";
 echo "      <td valign='bottom' align='left' style='border-color: #000000; border-left-style: none; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='265' height='20'>\n";
 echo "      </td>\n";

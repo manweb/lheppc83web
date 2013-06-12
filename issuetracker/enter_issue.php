@@ -3,14 +3,16 @@
 $db=mysql_connect("lheppc90.unibe.ch","exodaq","EXOsql");
 mysql_select_db("exo");
 
-$result = mysql_query("select max(ID) from issuetracker");
-$id = mysql_result($result,0) + 1;
-
-if (!$_POST['AssignedTo']) {
+if ($_POST['id']) {
+   $id = $_POST['id'];
    $result = mysql_query("select max(CommentID) from issuetracker where ID='$id'");
    $comID = mysql_result($result,0) + 1;
 }
-else {$comID = 0;}
+else {
+    $result = mysql_query("select max(ID) from issuetracker");
+    $id = mysql_result($result,0) + 1;
+    $comID = 0;
+}
 
 $current_date = date("Y-m-d");
 $current_time = date("H:i:s");
@@ -38,6 +40,118 @@ if ($_POST['Category']) {
 else {$category = 0;}
 
 $insert = mysql_query("insert into issuetracker (ID, date, time, Project, SubmitBy, AssignedTo, Description, Message, DueOn, category, CommentID) values ('$id', '$current_date', '$current_time', '$project', '$name', '$assigned', '$description', '$message', '$dueOn', '$category', '$comID')");
+
+if ($name != $assigned && $assigned) {
+   if ($_POST['SendAll']) {$mail = mysql_query("select email from users");}
+   else {$mail = mysql_query("select email from users where name='$assigned'");}
+
+   if (!$name) {$name = "Someone";}
+}
+elseif (!$name && !$assigned && $_POST['SendAll']) {
+   $mail = mysql_query("select email from users");
+   $name = "Someone";
+}
+else {$mail = 0;}
+
+require("class.phpmailer.php");
+if ($mail && !$_POST['id']) {
+   $body = $name." has submitted a new issue and you have been assigned. Please review the issue number ".$id.".\n";
+   $m=0;
+   while ($row = mysql_fetch_row($mail)) {
+//      $mail_var = "mail$m";
+      $mail_var = new PHPMailer();
+      $mail_var->IsSMTP();
+      $mail_var->CharSet = 'UTF-8';
+      
+      $mail_var->Host       = "smtp.gmail.com"; // SMTP server example
+      $mail_var->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+      $mail_var->SMTPSecure = 'ssl';
+      $mail_var->SMTPAuth   = true;                  // enable SMTP authentication
+      $mail_var->Port       = 465;                    // set the SMTP port for the GMAIL server
+      $mail_var->Username   = "exo.bern"; // SMTP account username example
+      $mail_var->Password   = "L1qu1dTPC";        // SMTP account password example
+
+      $mail_var->From = "issuetracker@lheppc83.unibe.ch";
+      $mail_var->FromName = "Issue Tracker";
+      $mail_var->AddAddress($row[0]);
+
+      $mail_var->Subject = "New issue";
+      $mail_var->Body    = $body;
+
+      $mail_var->Send();
+
+      $m++;
+
+   }
+}
+elseif ($_POST['id']) {
+   $u = mysql_query("select SubmitBy from issuetracker where ID='$id' and SubmitBy!='$name'");
+
+   if (!$name) {$name = "Someone";}
+
+   $body = $name." has added a comment to the issue number ".$id.".\n";
+
+   $m=0;
+   while ($n = mysql_fetch_row($u)) {
+      $mail = mysql_query("select email from users where name='$n[0]'");
+      $mailAddress = mysql_result($mail,0);
+
+      //$mail_var = "mail$m";
+      $mail_var = new PHPMailer();
+      $mail_var->IsSMTP();
+      $mail_var->CharSet = 'UTF-8';
+      
+      $mail_var->Host       = "smtp.gmail.com"; // SMTP server example
+      $mail_var->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+      $mail_var->SMTPSecure = 'ssl';
+      $mail_var->SMTPAuth   = true;                  // enable SMTP authentication
+      $mail_var->Port       = 465;                    // set the SMTP port for the GMAIL server
+      $mail_var->Username   = "exo.bern"; // SMTP account username example
+      $mail_var->Password   = "L1qu1dTPC";        // SMTP account password example
+
+      $mail_var->From = "issuetracker@lheppc83.unibe.ch";
+      $mail_var->FromName = "Issue Tracker";
+      $mail_var->AddAddress($mailAddress);
+
+      $mail_var->Subject = "New comment";
+      $mail_var->Body    = $body;
+
+      $mail_var->Send();
+
+      $m++;
+   }
+
+   $u = mysql_query("select AssignedTo from issuetracker where ID='$id'");
+   $n = mysql_result($u,0);
+
+   if ($n) {
+
+      $mail = mysql_query("select email from users where name='$n'");
+      $mailAddress = mysql_result($mail,0);
+
+      //$mail_var = "mail$m";
+      $mail_var = new PHPMailer();
+      $mail_var->IsSMTP();
+      $mail_var->CharSet = 'UTF-8';
+      
+      $mail_var->Host       = "smtp.gmail.com"; // SMTP server example
+      $mail_var->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+      $mail_var->SMTPSecure = 'ssl';
+      $mail_var->SMTPAuth   = true;                  // enable SMTP authentication
+      $mail_var->Port       = 465;                    // set the SMTP port for the GMAIL server
+      $mail_var->Username   = "exo.bern"; // SMTP account username example
+      $mail_var->Password   = "L1qu1dTPC";        // SMTP account password example
+
+      $mail_var->From = "issuetracker@lheppc83.unibe.ch";
+      $mail_var->FromName = "Issue Tracker";
+      $mail_var->AddAddress($mailAddress);
+
+      $mail_var->Subject = "New comment";
+      $mail_var->Body    = $body;
+
+      $mail_var->Send();
+   }
+}
 
 echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=issuetracker/IssueTracker.php'>";
 
