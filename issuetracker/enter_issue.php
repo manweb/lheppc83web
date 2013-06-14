@@ -24,7 +24,9 @@ if ($_POST['AssignedTo']) {$assigned = $_POST['AssignedTo'];}
 else {$assigned = 0;}
 if ($_POST['Description']) {$description = $_POST['Description'];}
 else {$description = 0;}
+$description = str_replace("'", "''", $description);
 $message = $_POST['Message'];
+$message = str_replace("'", "''", $message);
 if ($_POST['DueOn']) {$dueOn = $_POST['DueOn'];}
 else {$dueOn = "0000-00-00";}
 if ($_POST['Category']) {
@@ -52,6 +54,9 @@ elseif (!$name && !$assigned && $_POST['SendAll']) {
    $name = "Someone";
 }
 else {$mail = 0;}
+
+$result = mysql_query("select AssignedTo from issuetracker where ID='$id'");
+$ass = mysql_result($result,0);
 
 require("class.phpmailer.php");
 if ($mail && !$_POST['id']) {
@@ -91,6 +96,8 @@ elseif ($_POST['id']) {
 
    $body = $name." has added a comment to the issue number ".$id.".\n";
 
+   $sendAss = true;
+
    $m=0;
    while ($n = mysql_fetch_row($u)) {
       $mail = mysql_query("select email from users where name='$n[0]'");
@@ -118,15 +125,14 @@ elseif ($_POST['id']) {
 
       $mail_var->Send();
 
+      if ($ass == $n[0]) {$sendAss = false;}
+
       $m++;
    }
 
-   $u = mysql_query("select AssignedTo from issuetracker where ID='$id'");
-   $n = mysql_result($u,0);
+   if ($ass && $sendAss) {
 
-   if ($n) {
-
-      $mail = mysql_query("select email from users where name='$n'");
+      $mail = mysql_query("select email from users where name='$ass'");
       $mailAddress = mysql_result($mail,0);
 
       //$mail_var = "mail$m";

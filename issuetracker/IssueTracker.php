@@ -45,7 +45,7 @@ while ($issues = mysql_fetch_assoc($result)) {
             $bgcolor = "#E0F8E0";
             break;
         case 3:
-            $bgcolor = "#F7F8E0";
+            $bgcolor = "#FFF8A4";
             break;
     }
     
