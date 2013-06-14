@@ -51,8 +51,8 @@ while ($issues = mysql_fetch_assoc($result)) {
     
     $id = $issues['ID'];
     
-    $nComments = mysql_query("select max(CommentID) from issuetracker where ID='$id'");
-    $nCom = mysql_result($nComments,0);
+    $nComments = mysql_query("select * from issuetracker where ID='$id' and CommentID > 0");
+    $nCom = mysql_num_rows($nComments);
     
   echo "<tr>\n";
   echo "<td align='center' valign='middle' style='margin-top: 5' width='20' bgcolor='#FFFFFF'><input type='checkbox' id='ck".$issues['ID']."' onclick='changeLink(".$issues['ID'].")'></td>\n";
