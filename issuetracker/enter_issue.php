@@ -81,7 +81,10 @@ elseif ($_POST['id']) {
    $result = mysql_query("select AssignedTo from issuetracker where ID='$id'");
    $n = mysql_result($result,0);
    
-   if (!array_search($n, $recipients)) {array_push($recipients, $n);}
+   $result = mysql_query("select email from users where name='$n'");
+   $mail = mysql_result($result,0);
+   
+   if (!array_search($mail, $recipients)) {array_push($recipients, $mail);}
    
    if (!$name) {$name = "Someone";}
    $subject = "New comment";
