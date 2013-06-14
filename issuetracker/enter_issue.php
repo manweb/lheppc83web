@@ -93,7 +93,7 @@ elseif ($_POST['id']) {
 echo $recipients[0];
 if (sizeof($recipients) > 0) {SendMail($recipients, $subject, $body);}
 
-//echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=issuetracker/IssueTracker.php'>";
+echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=issuetracker/IssueTracker.php'>";
 
 function SendMail($recipients, $subject, $body)
 {
