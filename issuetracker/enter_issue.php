@@ -78,7 +78,7 @@ elseif ($_POST['id']) {
       if (!array_search($mail, $recipients)) {array_push($recipients, $mail);}
    }
    
-   $result = mysql_query("select AssignedTo from issuetracker where ID='$id'");
+   $result = mysql_query("select AssignedTo from issuetracker where ID='$id' && AssignedTo!='$name'");
    $n = mysql_result($result,0);
    
    $result = mysql_query("select email from users where name='$n'");
