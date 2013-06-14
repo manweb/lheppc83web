@@ -90,7 +90,7 @@ elseif ($_POST['id']) {
    $subject = "New comment";
    $body = $name." has added a comment to the issue number ".$id.".\n";
 }
-echo $recipients[0];
+
 if (sizeof($recipients) > 0) {SendMail($recipients, $subject, $body);}
 
 echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=issuetracker/IssueTracker.php'>";
