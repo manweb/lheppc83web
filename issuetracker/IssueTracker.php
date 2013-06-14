@@ -1,4 +1,4 @@
-<p align="right" style="margin-top: 5; margin-bottom: 5; margin-right: 20;"><a href="index.php?page=issuetracker/NewIssue.php" title="Submit new issue"><img src="../image/add_issue.png"></a>&nbsp;&nbsp;<a id="LinkSolved" href="#" title="Mark issue solved"><img src="../image/issue_solved.png"></a>&nbsp;&nbsp;<a id="LinkArchive" href="#" title="Archive issue"><img src="../image/archive_issue.png"></a>&nbsp;&nbsp;<a id="LinkDelete" href="#" title="Delete issue"><img src="../image/delete_issue.png"></a></p>
+<p align="right" style="margin-top: 5; margin-bottom: 5; margin-right: 20;"><a href="index.php?page=issuetracker/NewIssue.php" title="Submit new issue"><img src="../image/add_issue.png"></a>&nbsp;&nbsp;<a id="LinkSolved" href="#" title="Mark issue solved"><img src="../image/issue_solved.png"></a>&nbsp;&nbsp;<a id="LinkArchive" href="#" title="Archive issue"><img src="../image/archive_issue.png"></a>&nbsp;&nbsp;<a id="LinkDelete" href="#" title="Delete issue" onclick="return confirm('Delete this issue?')"><img src="../image/delete_issue.png"></a></p>
 
 <table align="center" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="740">
 <tr>
@@ -133,7 +133,7 @@ while ($issues = mysql_fetch_assoc($result)) {
             echo "<td valign='top' align='left' style='border-color: #0000FF; border-left-style: dashed; border-left-width: 1; border-right-style: dashed; border-right-width: 1; border-top-style: dashed; border-top-width: 1; border-bottom-style: dashed; border-bottom-width: 1' width='660' bgcolor='#E2E2E2'><font size='2'>".$com['SubmitBy']." on ".$com['date']." ".$com['time'].":<br><br>".nl2br($com['Message'])."</font>\n";
             echo "<br>\n";
             echo "</td>\n";
-            echo "<td valign='top' align='left' style='border-color: #000000; border-left-style: dashed; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='20' bgcolor='$bgcolor'><a href='issuetracker/delete_comment.php?id=".$issues['ID']."&comID=".$com['CommentID']."'><img src='../image/delete_comment.png'></a>\n";
+            echo "<td valign='top' align='left' style='border-color: #000000; border-left-style: dashed; border-left-width: 0; border-right-style: none; border-right-width: 0; border-top-style: none; border-top-width: 0; border-bottom-style: none; border-bottom-width: 0' width='20' bgcolor='$bgcolor'><a href='issuetracker/delete_comment.php?id=".$issues['ID']."&comID=".$com['CommentID']."' onclick='return confirm(\"Delete this comment?\")'><img src='../image/delete_comment.png'></a>\n";
             echo "</td>\n";
             echo "</tr>\n";
             echo "</table>\n";
