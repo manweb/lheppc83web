@@ -71,11 +71,11 @@ if ($mail) {
 elseif ($_POST['id']) {
    $result = mysql_query("select SubmitBy from issuetracker where ID='$id' and SubmitBy!='$name'");
    
-   while ($row = mysql_fetch_row($result) {
+   while ($row = mysql_fetch_row($result)) {
       $user = $row[0];
       $u = mysql_query("select email from users where name='$user'");
       $mail = mysql_result($u,0);
-      if (!array_search($mail, $recipients) {array_push($recipients, $mail);}
+      if (!array_search($mail, $recipients)) {array_push($recipients, $mail);}
    }
    
    $result = mysql_query("select AssignedTo from issuetracker where ID='$id'");
@@ -87,10 +87,10 @@ elseif ($_POST['id']) {
    $subject = "New comment";
    $body = $name." has added a comment to the issue number ".$id.".\n";
 }
-
+echo $recipients[0];
 if (sizeof($recipients) > 0) {SendMail($recipients, $subject, $body);}
 
-echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=issuetracker/IssueTracker.php'>";
+//echo "<meta http-equiv='refresh' content='0; URL=../index.php?page=issuetracker/IssueTracker.php'>";
 
 function SendMail($recipients, $subject, $body)
 {
