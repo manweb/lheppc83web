@@ -1,8 +1,8 @@
 <?php
 
 //**** Initialize ****
-$LibExport = "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/exodaq/ReadMidas/lib";
-$PathExport = "export PATH=$PATH:/home/exodaq/ReadMidas/bin";
+$LibExport = "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/home/exodaq/ReadMidas/lib:/home/exodaq/mTPCSoftware/lib";
+$PathExport = "export PATH=\$PATH:/home/exodaq/ReadMidas/bin";
 
 // test connection to daq
 $fp = fsockopen("lhepdaq5.unibe.ch", 22, $errno, $errstr, 3);
@@ -191,6 +191,10 @@ echo "<form action='runlist/enterruncategory.php' id='ckRun' class='fileform' me
          if ($ext == ".root" && ($currentRun['runDate'] == "0" || $currentRun['runDate'] == NULL || ($currentRun['runDuration'] == NULL || $currentRun['runDuration'] == "0") && ($currentRun['nbEvents'] == NULL || $currentRun['nbEvents'] == "0"))) {
             $cmd = "$LibExport; $PathExport; getRunInfo $homeDir$file";
             $outp = shell_exec($cmd);
+            $pos = strpos($outp, "::");
+            $outp = substr($outp, $pos+2);
+            $pos = strpos($outp, "::");
+            $outp = substr($outp, 0, $pos);
             $runInfo = split(';', $outp);
             
             $upd = mysql_query("update $database set nbEvents='$runInfo[0]', runDuration='$runInfo[1]', trigThreshold='$runInfo[2]', extTrigStatus='$runInfo[3]', localTrigStatus='$runInfo[4]', grpMultiplicity='$runInfo[5]', runDate='$runInfo[6]', fileSize='$siz' where runNumber = '$runNb'");
@@ -257,6 +261,10 @@ echo "<form action='runlist/enterruncategory.php' id='ckRun' class='fileform' me
          if ($ext == ".root") {
             $cmd = "$LibExport; $PathExport; getRunInfo $homeDir$file";
             $outp = shell_exec($cmd);
+            $pos = strpos($outp, "::");
+            $outp = substr($outp, $pos+2);
+            $pos = strpos($outp, "::");
+            $outp = substr($outp, 0, $pos);
             $runInfo = split(';', $outp);
             
             $input=mysql_query("insert into $database (runNumber, runDate, runDuration, nbEvents, trigThreshold, grpMultiplicity, extTrigStatus, localTrigStatus, fileSize) values ('$runNb', '$runInfo[6]', '$runInfo[1]', '$runInfo[0]','$runInfo[2]', '$runInfo[5]', '$runInfo[3]', '$runInfo[4]', '$siz')") or die (mysql_error());
